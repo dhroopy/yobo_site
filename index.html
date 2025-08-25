@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yobo - Build Better. Build Confident.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Glacial+Indifference:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Glacial Indifference', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #ffffff;
+            background: #0a0a0a;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid #333;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #60a5fa;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #d1d5db;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #60a5fa;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1e3a8a 0%, #7c3aed 100%);
+            color: white;
+            padding: 120px 20px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><path d="M0 0h100v100H0z" fill="rgba(255,255,255,0.05)"/></svg>') repeat;
+            opacity: 0.1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        .hero .subtext {
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            opacity: 0.8;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .app-download-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .app-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #000;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: transform 0.3s ease;
+        }
+
+        .app-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 20px;
+        }
+
+        .section-alt {
+            background: #111111;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: #9ca3af;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Product Categories */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .category-card {
+            background: #1a1a1a;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #333;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .category-icon {
+            width: 60px;
+            height: 60px;
+            background: #3b82f6;
+            border-radius: 12px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+
+        .category-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .category-card p {
+            color: #9ca3af;
+        }
+
+        /* Why Choose Us */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-item {
+            text-align: center;
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #1e3a8a 0%, #7c3aed 100%);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 28px;
+        }
+
+        .feature-item h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+
+        .feature-item p {
+            color: #9ca3af;
+        }
+
+        /* Blog Section */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .blog-card {
+            background: #1a1a1a;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            border: 1px solid #333;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .blog-image {
+            height: 200px;
+            background: linear-gradient(45deg, #1e3a8a 0%, #7c3aed 100%);
+            position: relative;
+        }
+
+        .blog-image::after {
+            content: '📖';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 40px;
+        }
+
+        .blog-content {
+            padding: 25px;
+        }
+
+        .blog-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .blog-card p {
+            color: #9ca3af;
+            margin-bottom: 15px;
+        }
+
+        .read-more {
+            color: #60a5fa;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* CTA Sections */
+        .cta-section {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: #3b82f6;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: background 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            background: #2563eb;
+        }
+
+        /* Contact Section */
+        .contact-options {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #1a1a1a;
+            color: #ffffff;
+            padding: 15px 25px;
+            text-decoration: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            font-weight: 500;
+            transition: transform 0.3s ease;
+            border: 1px solid #333;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: #0a0a0a;
+            color: white;
+            padding: 60px 20px 30px;
+            border-top: 1px solid #333;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            text-align: center;
+            color: #9ca3af;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .app-download-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-options {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animation classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Yobo</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products/Materials</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#suppliers">For Suppliers</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Build Better. Build Confident.</h1>
+            <p class="subtitle">Your Trusted Partner for Quality Building Materials</p>
+            <p class="subtext">From trusted brands to best prices—steel, cement, bricks, and more. Everything for your project, in one place.</p>
+            <div class="app-download-buttons">
+                <a href="#" class="app-btn">
+                    <span>📱</span>
+                    <div>
+                        <div style="font-size: 0.8em;">Get it on</div>
+                        <div>Google Play</div>
+                    </div>
+                </a>
+                <a href="#" class="app-btn">
+                    <span>🍎</span>
+                    <div>
+                        <div style="font-size: 0.8em;">Download on the</div>
+                        <div>App Store</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Categories -->
+    <section id="products" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Explore Our Product Range</h2>
+                <p>Discover top brands across steel, cement, tile adhesives, bricks, waterproofing, and more.</p>
+            </div>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-icon">🏗️</div>
+                    <h3>Steel & Iron</h3>
+                    <p>Premium quality steel bars, pipes, and structural materials from trusted manufacturers.</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🏭</div>
+                    <h3>Cement</h3>
+                    <p>High-grade cement from leading brands for all construction needs.</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🧱</div>
+                    <h3>Bricks & Blocks</h3>
+                    <p>Durable bricks and concrete blocks for strong foundations and walls.</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🔧</div>
+                    <h3>Tile Adhesives</h3>
+                    <p>Professional-grade adhesives for perfect tile installations.</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">💧</div>
+                    <h3>Waterproofing</h3>
+                    <p>Complete waterproofing solutions to protect your structures.</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">⚒️</div>
+                    <h3>Tools & Hardware</h3>
+                    <p>Essential construction tools and hardware for every project.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Professionals Choose Yobo</h2>
+                <p>Experience the difference with our commitment to quality and service.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">✅</div>
+                    <h3>Genuine Materials</h3>
+                    <p>Genuine materials direct from top brands with quality assurance and authenticity guarantees.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">💰</div>
+                    <h3>Transparent Pricing</h3>
+                    <p>Clear, competitive pricing with no hidden costs. What you see is what you pay.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🤝</div>
+                    <h3>Reliable Support</h3>
+                    <p>Dedicated customer support before and after sale. We're here when you need us.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📱</div>
+                    <h3>App-Powered Convenience</h3>
+                    <p>Easy ordering, real-time tracking, and seamless experience through our mobile app.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Construction Insights & Tips</h2>
+                <p>Stay updated with news, guides, and best practices from industry experts.</p>
+            </div>
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <div class="blog-image"></div>
+                    <div class="blog-content">
+                        <h3>Best Practices for Steel Construction</h3>
+                        <p>Learn about the latest techniques and safety measures in steel construction projects.</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-image"></div>
+                    <div class="blog-content">
+                        <h3>Choosing the Right Cement Grade</h3>
+                        <p>A comprehensive guide to selecting the perfect cement type for your specific project needs.</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-image"></div>
+                    <div class="blog-content">
+                        <h3>Waterproofing Solutions for Monsoon</h3>
+                        <p>Protect your buildings with effective waterproofing strategies for the rainy season.</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Download Section -->
+    <section class="section cta-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 style="color: white;">Ready to Build Smarter? Download the Yobo App</h2>
+                <p style="color: rgba(255,255,255,0.9);">Experience the future of construction material procurement</p>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin: 40px 0;">
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 10px;">🛒</div>
+                    <h3 style="margin-bottom: 10px;">Buy Online</h3>
+                    <p style="color: rgba(255,255,255,0.8);">Buy top building materials online with ease</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 10px;">📍</div>
+                    <h3 style="margin-bottom: 10px;">Real-time Tracking</h3>
+                    <p style="color: rgba(255,255,255,0.8);">Real-time tracking & instant updates on your orders</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 10px;">🎯</div>
+                    <h3 style="margin-bottom: 10px;">Exclusive Offers</h3>
+                    <p style="color: rgba(255,255,255,0.8);">Access exclusive app offers and discounts</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 10px;">⭐</div>
+                    <h3 style="margin-bottom: 10px;">Trusted Platform</h3>
+                    <p style="color: rgba(255,255,255,0.8);">Trusted by top contractors & developers nationwide</p>
+                </div>
+            </div>
+            <div class="app-download-buttons">
+                <a href="#" class="app-btn">
+                    <span>📱</span>
+                    <div>
+                        <div style="font-size: 0.8em;">Get it on</div>
+                        <div>Google Play</div>
+                    </div>
+                </a>
+                <a href="#" class="app-btn">
+                    <span>🍎</span>
+                    <div>
+                        <div style="font-size: 0.8em;">Download on the</div>
+                        <div>App Store</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Supplier Section -->
+    <section id="suppliers" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Join Our Supplier Network</h2>
+                <p>Are you a material vendor looking to grow? Connect for new business opportunities.</p>
+            </div>
+            <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin: 40px 0;">
+                    <div>
+                        <div style="font-size: 2.5rem; margin-bottom: 15px;">🤝</div>
+                        <h4>Partnership Benefits</h4>
+                        <p style="color: #64748b;">Expand your reach and grow your business</p>
+                    </div>
+                    <div>
+                        <div style="font-size: 2.5rem; margin-bottom: 15px;">📈</div>
+                        <h4>Increased Sales</h4>
+                        <p style="color: #64748b;">Access to thousands of potential customers</p>
+                    </div>
+                    <div>
+                        <div style="font-size: 2.5rem; margin-bottom: 15px;">💼</div>
+                        <h4>Professional Support</h4>
+                        <p style="color: #64748b;">Dedicated account management and support</p>
+                    </div>
+                </div>
+                <a href="#contact" class="cta-btn">Connect With Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>Need Help? Connect With Us</h2>
+                <p>Our team is just a message away for your queries and feedback.</p>
+            </div>
+            <div class="contact-options">
+                <a href="https://wa.me/1234567890" class="contact-btn">
+                    <span style="font-size: 1.5rem;">💬</span>
+                    <div>
+                        <div>WhatsApp</div>
+                        <div style="font-size: 0.9em; color: #64748b;">Quick Support</div>
+                    </div>
+                </a>
+                <a href="mailto:support@buildpro.com" class="contact-btn">
+                    <span style="font-size: 1.5rem;">📧</span>
+                    <div>
+                        <div>Email Us</div>
+                        <div style="font-size: 0.9em; color: #64748b;">Detailed Queries</div>
+                    </div>
+                </a>
+                <a href="#contact-form" class="contact-btn">
+                    <span style="font-size: 1.5rem;">📝</span>
+                    <div>
+                        <div>Connect With Us</div>
+                        <div style="font-size: 0.9em; color: #64748b;">Fill Our Form</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Yobo</h3>
+                <p>Your trusted partner for quality building materials. Building dreams, one project at a time.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="#suppliers">For Suppliers</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#help">Help Center</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#privacy">Privacy Policy</a></li>
+                    <li><a href="#terms">Terms of Use</a></li>
+                    <li><a href="#cookie-policy">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Yobo. All rights reserved. | Building materials made simple.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle (basic functionality)
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Add fade-in animation to elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeIn 0.8s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all section elements
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Navbar background change on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(10, 10, 10, 0.98)';
+            } else {
+                navbar.style.background = 'rgba(10, 10, 10, 0.95)';
+            }
+        });
+    </script>
+</body>
+</html>
