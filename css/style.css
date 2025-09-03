@@ -413,14 +413,38 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .nav-links {
-        display: none;
+    .nav-container {
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
     }
-
+    .logo {
+        margin-bottom: 10px;
+    }
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        gap: 0;
+        background: rgba(10,10,10,0.98);
+        position: absolute;
+        top: 70px;
+        left: 0;
+        display: none;
+        z-index: 1001;
+    }
+    .nav-links.show {
+        display: flex;
+    }
+    .nav-links li {
+        width: 100%;
+        text-align: left;
+        padding: 15px 20px;
+        border-bottom: 1px solid #333;
+    }
     .mobile-menu-btn {
         display: block;
+        margin-left: auto;
     }
-
     .hero h1 {
         font-size: 2.5rem;
     }
