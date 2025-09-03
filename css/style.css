@@ -26,25 +26,30 @@ body {
 }
 
 .nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    position: relative;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 70px;
 }
 
 .logo {
+    font-family: 'Glacial Indifference', sans-serif;
+    color: #fff;
     font-size: 24px;
     font-weight: 700;
-    color: #60a5fa;
+    margin-right: 30px;
 }
 
 .nav-links {
     display: flex;
     list-style: none;
     gap: 30px;
+    flex: 1;
+    align-items: center;
 }
 
 .nav-links a {
@@ -64,6 +69,8 @@ body {
     border: none;
     font-size: 20px;
     cursor: pointer;
+    margin-left: auto;
+    color: #ffffff;
 }
 
 /* Hero Section */
@@ -414,23 +421,23 @@ body {
 /* Responsive Design */
 @media (max-width: 768px) {
     .nav-container {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
+        align-items: center;
         height: auto;
     }
     .logo {
-        margin-bottom: 10px;
+        margin-bottom: 0;
     }
     .nav-links {
-        flex-direction: column;
-        width: 100%;
-        gap: 0;
-        background: rgba(10,10,10,0.98);
         position: absolute;
         top: 70px;
         left: 0;
+        flex-direction: column;
+        width: 100%;
+        background: rgba(10,10,10,0.98);
         display: none;
         z-index: 1001;
+        gap: 0;
     }
     .nav-links.show {
         display: flex;
@@ -443,7 +450,7 @@ body {
     }
     .mobile-menu-btn {
         display: block;
-        margin-left: auto;
+        margin-left: 0;
     }
     .hero h1 {
         font-size: 2.5rem;
