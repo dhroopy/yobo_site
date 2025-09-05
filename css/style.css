@@ -231,9 +231,13 @@ body {
 
 /* Why Choose Us */
 .features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 40px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  justify-items: center;
+  align-items: stretch;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .feature-item {
@@ -262,6 +266,13 @@ body {
 
 .feature-item p {
     color: #9ca3af;
+}
+
+@media (max-width: 600px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
 }
 
 /* Blog Section */
