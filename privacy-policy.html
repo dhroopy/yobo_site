@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy & Terms of Use - YOBO</title>
+    <title>YOBO - Polices</title>
     <style>
         * {
             margin: 0;
@@ -191,12 +191,13 @@
     <div class="container">
         <div class="header">
             <h1>YOBO Legal</h1>
-            <p>Privacy Policy & Terms of Use</p>
+            <p>Policies</p>
         </div>
 
         <nav class="nav-tabs">
             <button class="tab-btn active" onclick="showTab('privacy')">Privacy Policy</button>
             <button class="tab-btn" onclick="showTab('terms')">Terms of Use</button>
+            <button class="tab-btn" onclick="showTab('refund')">Refund & Replacement Policy</button>
         </nav>
 
         <div class="content">
@@ -368,8 +369,47 @@
                     <div class="contact-item"><strong>WhatsApp:</strong> +91-8085480120</div>
                 </div>
             </div>
+
+            <!-- Refund Policy-->
+            <div id="refund" class="tab-content">
+                <div class="last-updated">
+                    Last updated: 2025-09-20
+                </div>
+                <h2>Refund & Replacement Policy</h2>
+                <h3>Eligible Circumstances for Refund</h3>
+                <ul>
+                    <li>Wrong Delivery: If the material delivered is not as per the confirmed order (wrong brand, size, grade, or type).</li>
+                    <li>Quality Issues: Major defects or quality deviations from the agreed specifications.</li>
+                    <li>Quantity Issues: If the material delivered is significantly less than the billed/ordered quantity.</li>
+                    <li>Failed Payments: If payment has been deducted but not reflected in our system.</li>
+                    <li>Stock Unavailability: If the ordered product becomes unavailable after payment is received.</li>
+                    <li>Duplicate Payment: If the customer accidentally pays more than once for the same order.</li>
+                </ul>
+                <h3>Refund Process</h3>
+                <ul>
+                    <li>Refunds are initiated within 4–5 business working days after eligibility confirmation.</li>
+                    <li>Refunds will be made to the original mode of payment.</li>
+                    <li>YOBO is not responsible for bank/payment gateway delays once processed from our end.</li>
+                </ul>
+                <h3>Non-Refundable Situations</h3>
+                <ul>
+                    <li>Minor variation in color, texture, or packaging that does not affect quality or usability.</li>
+                    <li>Materials damaged due to mishandling after delivery.</li>
+                    <li>Orders placed under special schemes/offers with separate refund terms.</li>
+                </ul>
+                <p>Refunds/replacements are at management’s discretion. Refund value will not exceed the order value. YOBO is not liable for indirect losses such as delays or project costs.</p>
+                <h3>Replacement Policy</h3>
+                <ul>
+                    <li>Wrong materials delivered (brand/size/type/grade mismatch).</li>
+                    <li>Shortages or excess quantity delivered.</li>
+                    <li>Damaged goods received at the time of delivery.</li>
+                </ul>
+                <p>Conditions: Must be reported within 24 hours of delivery. Items must be unused and in original condition. Subject to management’s discretion and vendor approval.</p>
+                <p><strong>Contact for Refunds:</strong> Email <a href="mailto:support@yoboindia.com">support@yoboindia.com</a></p>
+            </div>
         </div>
-    </div>
+
+
 
     <script>
         function showTab(tabName) {
@@ -394,7 +434,8 @@
             // Update page title
             const titles = {
                 'privacy': 'Privacy Policy - YOBO',
-                'terms': 'Terms of Use - YOBO'
+                'terms': 'Terms of Use - YOBO',
+                'refund': 'Refund & Replacement Policy - YOBO'
             };
             document.title = titles[tabName];
         }
