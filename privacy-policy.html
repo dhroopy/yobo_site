@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YOBO - Polices</title>
+    <title>Privacy Policy - YOBO</title>
     <style>
         * {
             margin: 0;
@@ -190,25 +190,18 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>YOBO Legal</h1>
-            <p>Privacy Policies</p>
+            <h1>YOBO Privacy Policy</h1>
+            <p>Developed by OEPP INNOVATIONS PRIVATE LIMITED (9930I)</p>
         </div>
 
-        <!-- <nav class="nav-tabs">
-            <button class="tab-btn active" onclick="showTab('privacy')">Privacy Policy</button>
-            <button class="tab-btn" onclick="showTab('terms')">Terms of Use</button>
-            <button class="tab-btn" onclick="showTab('refund')">Refund & Replacement Policy</button>
-        </nav> -->
-
         <div class="content">
-            <!-- Privacy Policy Tab -->
             <div id="privacy" class="tab-content active">
                 <div class="last-updated">
-                    Last updated: 2025-08-01
+                    Last updated: November 11, 2025
                 </div>
 
                 <h2>Privacy Policy</h2>
-                <p><strong>YOBO</strong> ("we", "our", "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website <strong>yoboindia.com</strong> and use our mobile application (the "Services").</p>
+                <p><strong>YOBO</strong> mobile application and website <strong>yoboindia.com</strong> ("we", "our", "us") is developed and operated by <strong>OEPP INNOVATIONS PRIVATE LIMITED</strong>. We are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our Services.</p>
 
                 <div class="section">
                     <h3>Information We Collect</h3>
@@ -276,61 +269,31 @@
                     <p>We may update this Privacy Policy from time to time to reflect changes in our practices or legal requirements. We will notify you of any material changes by posting the updated policy on this page and updating the "Last Updated" date.</p>
                 </div>
 
+                <div class="section">
+                    <h3>About the Developer</h3>
+                    <p><strong>OEPP INNOVATIONS PRIVATE LIMITED</strong> is the developer and operator of the YOBO application and related services. We are committed to maintaining the highest standards of data protection and user privacy.</p>
+                </div>
+
                 <div class="contact-info">
                     <h4>Contact Us</h4>
-                    <p>For questions regarding this Privacy Policy, please contact us at:</p>
+                    <p>For questions regarding this Privacy Policy or our data practices, please contact us at:</p>
+                    <div class="contact-item"><strong>Developer:</strong> OEPP INNOVATIONS PRIVATE LIMITED</div>
                     <div class="contact-item"><strong>Email:</strong> support@yoboindia.com</div>
                     <div class="contact-item"><strong>WhatsApp:</strong> +91-8085480120</div>
+                    <div class="contact-item"><strong>Website:</strong> yoboindia.com</div>
                 </div>
             </div>
         </div>
 
-
-
-    <!-- <script>
-        function showTab(tabName) {
-            // Hide all tab contents
-            const tabContents = document.querySelectorAll('.tab-content');
-            tabContents.forEach(content => {
-                content.classList.remove('active');
-            });
-
-            // Remove active class from all tabs
-            const tabBtns = document.querySelectorAll('.tab-btn');
-            tabBtns.forEach(btn => {
-                btn.classList.remove('active');
-            });
-
-            // Show selected tab content
-            document.getElementById(tabName).classList.add('active');
-            
-            // Add active class to clicked tab
-            event.target.classList.add('active');
-
-            // Update page title
-            const titles = {
-                'privacy': 'Privacy Policy - YOBO',
-                'terms': 'Terms of Use - YOBO',
-                'refund': 'Refund & Replacement Policy - YOBO'
-            };
-            document.title = titles[tabName];
-        }
-
-        // Add smooth scrolling behavior
-        document.addEventListener('DOMContentLoaded', function() {
-            // Smooth scroll to top when switching tabs
-            const tabBtns = document.querySelectorAll('.tab-btn');
-            tabBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    setTimeout(() => {
-                        document.querySelector('.container').scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }, 100);
-                });
-            });
-        });
-    </script> -->
+        <!-- Add footer include -->
+        <div id="footer-placeholder"></div>
+        <script>
+        fetch('footer.html')
+          .then(response => response.text())
+          .then(html => {
+            document.getElementById('footer-placeholder').innerHTML = html;
+          });
+        </script>
+    </div>
 </body>
 </html>
